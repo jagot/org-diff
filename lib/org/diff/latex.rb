@@ -16,7 +16,7 @@ module Org
       def self.compile(filename, pdflatex, output: nil)
         puts "- Compiling #{filename} using #{pdflatex}"
         output = "#{File.basename(filename, ".*")}.pdf" if output.nil?
-        cmd = "latexmk -pdflatex=\"#{pdflatex}\" -jobname=#{File.basename(output, ".*")} #{filename}"
+        cmd = "latexmk -pdf -pdflatex=\"#{pdflatex}\" -jobname=#{File.basename(output, ".*")} #{filename}"
         puts "$ #{cmd}"
         `#{cmd}`
         $?.exitstatus == 0 or raise "Failed to compile #{filename}"
