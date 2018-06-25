@@ -28,7 +28,11 @@ A small utility to generate [[https://github.com/ftilmann/latexdiff][LaTeX diffs
     org-diff git file.org HEAD~1
   #+END_SRC
   will compare the current revision of =file.org= with the previous
-  one.
+  one. Alternatively, you can use the provided Git plugin to the same
+  effect:
+  #+BEGIN_SRC sh
+    git org-diff file.org HEAD~1
+  #+END_SRC
 
 * Development
   After checking out the repo, run =bin/setup= to install
