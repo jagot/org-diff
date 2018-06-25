@@ -20,7 +20,8 @@ module Org
 
       COMMON_DIFF_OPTIONS = {:emacs => {:default => "emacsclient", :desc => "Command to execute Emacs commands"},
                              :latexdiff => {:default => "latexdiff", :desc => "Command to generate the LaTeX diff. Override to use latexdiffcite, &c."},
-                             :pdflatex => {:default => "pdflatex", :desc => "LaTeX implementation to run on the generate diff"}}
+                             :pdflatex => {:default => "pdflatex", :desc => "LaTeX implementation to run on the generate diff"},
+                             :output => {:default => nil, :desc => "Override output filename"}}
 
       class File < Hanami::CLI::Command
         desc "Generates the LaTeX diff of two Org files."
@@ -40,7 +41,8 @@ module Org
 
           diff = Org::Diff::LaTeX::gen_diff(ltx_from, ltx_to, options.fetch(:latexdiff))
 
-          Org::Diff::LaTeX::compile(diff, options.fetch(:pdflatex))
+          Org::Diff::LaTeX::compile(diff, options.fetch(:pdflatex),
+                                    output: options.fetch(:output))
         end
       end
 
@@ -73,7 +75,7 @@ module Org
                 diff = Org::Diff::LaTeX::gen_diff(ltx_from, ltx_to, options.fetch(:latexdiff))
 
                 pdf_diff = Org::Diff::LaTeX::compile(diff, options.fetch(:pdflatex),
-                                                     output: "diff-#{::File.basename(file, ".*")}-#{old}-#{new}.pdf")
+                                                     output: options.fetch(:output, "diff-#{::File.basename(file, ".*")}-#{old}-#{new}.pdf"))
                 FileUtils.cp(pdf_diff, start_dir)
               end
             end
