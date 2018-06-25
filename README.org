@@ -18,6 +18,18 @@ A small utility to generate [[https://github.com/ftilmann/latexdiff][LaTeX diffs
     org-diff fileA.org fileB.org
   #+END_SRC
 
+  To instead generate the LaTeX diff for the same Org file, but for
+  different Git revisions, issue
+  #+BEGIN_SRC sh
+    org-diff git file.org revA [revB]
+  #+END_SRC
+  where the second revision is optional (=HEAD= by default), e.g.
+  #+BEGIN_SRC sh
+    org-diff git file.org HEAD~1
+  #+END_SRC
+  will compare the current revision of =file.org= with the previous
+  one.
+
 * Development
   After checking out the repo, run =bin/setup= to install
   dependencies. You can also run =bin/console= for an interactive

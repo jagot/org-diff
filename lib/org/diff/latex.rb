@@ -13,12 +13,14 @@ module Org
         diff
       end
 
-      def self.compile(filename, pdflatex)
+      def self.compile(filename, pdflatex, output: nil)
         puts "- Compiling #{filename} using #{pdflatex}"
-        cmd = "latexmk -pdflatex=\"#{pdflatex}\" #{filename}"
+        output = "#{File.basename(filename, ".*")}.pdf" if output.nil?
+        cmd = "latexmk -pdflatex=\"#{pdflatex}\" -jobname=#{File.basename(output, ".*")} #{filename}"
         puts "$ #{cmd}"
         `#{cmd}`
         $?.exitstatus == 0 or raise "Failed to compile #{filename}"
+        output
       end
     end
   end
