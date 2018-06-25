@@ -5,25 +5,29 @@
 A small utility to generate [[https://github.com/ftilmann/latexdiff][LaTeX diffs]] from [[https://orgmode.org][Org files]].
 
 * Installation
-  Install using:
+  Install by cloning this repository and from the root directory
+  issuing:
 
   #+BEGIN_SRC sh
     gem install org-diff
   #+END_SRC
 
 * Usage
-  TODO: Write usage instructions here
+  To generate the LaTeX diff between two Org files, issue
+  #+BEGIN_SRC sh
+    org-diff fileA.org fileB.org
+  #+END_SRC
 
 * Development
-  After checking out the repo, run `bin/setup` to install
-  dependencies. You can also run `bin/console` for an interactive
+  After checking out the repo, run =bin/setup= to install
+  dependencies. You can also run =bin/console= for an interactive
   prompt that will allow you to experiment.
 
-  To install this gem onto your local machine, run `bundle exec rake
-  install`. To release a new version, update the version number in
-  `version.rb`, and then run `bundle exec rake release`, which will
+  To install this gem onto your local machine, run =bundle exec rake
+  install=. To release a new version, update the version number in
+  =version.rb=, and then run =bundle exec rake release=, which will
   create a git tag for the version, push git commits and tags, and
-  push the `.gem` file to [[https://rubygems.org][rubygems.org]].
+  push the =.gem= file to [[https://rubygems.org][rubygems.org]].
 
 * Contributing
   Bug reports and pull requests are welcome on GitHub at

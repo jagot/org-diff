@@ -1,3 +1,7 @@
 #!/usr/bin/env ruby
 
 require "org/diff"
+require "hanami/cli"
+
+
+Hanami::CLI.new(Org::Diff::Commands).call
